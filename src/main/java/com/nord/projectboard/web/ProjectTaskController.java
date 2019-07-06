@@ -34,9 +34,15 @@ public class ProjectTaskController {
     public Iterable<ProjectTask> getAllPTs(){ return projectTaskService.findAll(); }
 
     @GetMapping("/{pt_id}")
-    public ResponseEntity<ProjectTask> getPTbyId(@PathVariable Long pt_id){
+    public ResponseEntity<ProjectTask> getPTById(@PathVariable Long pt_id){
         ProjectTask projectTask = projectTaskService.findById(pt_id);
         return new ResponseEntity<ProjectTask>(projectTask, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{pt_id}")
+    public ResponseEntity<?> deletePTById(@PathVariable Long pt_id){
+        projectTaskService.delete(pt_id);
+        return new ResponseEntity<String>("Project Task deleted", HttpStatus.OK);
     }
 
     private ResponseEntity<?> addErrorsToMap(BindingResult result) {

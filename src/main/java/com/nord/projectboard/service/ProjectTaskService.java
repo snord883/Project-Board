@@ -26,4 +26,8 @@ public class ProjectTaskService {
 //        if (projectTaskRepository.existsById(id))
             return projectTaskRepository.getById(id);
     }
+
+    public void delete(Long id){
+        projectTaskRepository.delete(findById(id));
+    }
 }
