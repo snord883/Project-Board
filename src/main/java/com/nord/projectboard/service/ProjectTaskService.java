@@ -22,7 +22,7 @@ public class ProjectTaskService {
 
     public Iterable<ProjectTask> findAll(){return projectTaskRepository.findAll();}
 
-    public ProjectTask getProjectById(Long id){
+    public ProjectTask findById(Long id){
 //        if (projectTaskRepository.existsById(id))
             return projectTaskRepository.getById(id);
     }

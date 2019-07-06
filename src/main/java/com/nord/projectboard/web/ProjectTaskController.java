@@ -33,6 +33,12 @@ public class ProjectTaskController {
     @GetMapping("/all")
     public Iterable<ProjectTask> getAllPTs(){ return projectTaskService.findAll(); }
 
+    @GetMapping("/{pt_id}")
+    public ResponseEntity<ProjectTask> getPTbyId(@PathVariable Long pt_id){
+        ProjectTask projectTask = projectTaskService.findById(pt_id);
+        return new ResponseEntity<ProjectTask>(projectTask, HttpStatus.OK);
+    }
+
     private ResponseEntity<?> addErrorsToMap(BindingResult result) {
         errorMap = new HashMap<>();
 
